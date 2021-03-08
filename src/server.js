@@ -24,6 +24,10 @@ app.use(morgan('dev'));
 app.use('/api/pins', pinsRouter);
 app.use('/api/boards', boardsRouter);
 app.use('/api/users', usersRouter);
+app.use('/healthcheck', (req, res) => {
+  console.log('GET healthcheck!');
+  return res.status(200).json({ message: 'OK' });
+});
 
 const start = async () => {
   try {
